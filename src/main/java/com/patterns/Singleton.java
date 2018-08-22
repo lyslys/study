@@ -1,4 +1,4 @@
-package design.patterns;
+package com.patterns;
 
 /**
  * lys

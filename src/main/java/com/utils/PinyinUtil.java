@@ -1,4 +1,4 @@
-package utils;
+package com.utils;
 
 import net.sourceforge.pinyin4j.PinyinHelper;
 
