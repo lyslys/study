@@ -8,6 +8,8 @@ public class User{
 
     private String name;
 
+    public String password;
+
     public String getAge() {
         return age;
     }
@@ -31,5 +33,6 @@ public class User{
     public void setName(String name) {
         this.name = name;
     }
+
 }
 

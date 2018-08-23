@@ -52,7 +52,7 @@ public class CommonUtils{
      */
     public static void  partField(String [] headersNew){
 
-        if(headersNew == null){
+        if(headersNew == null && headersNew.length == 0 ){
             return ;
         }
 

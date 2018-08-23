@@ -70,6 +70,7 @@ public class TestController{
 
             List<User> userList = new ArrayList<User>();
             User user = new User();
+            user.password = "123456";
             user.setAge("16");
             user.setName("张三");
             user.setSex("男");
