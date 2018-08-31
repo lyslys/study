@@ -26,7 +26,10 @@ class Demo{
 public class TestThread {
 
     public static void main(String[] args) {
-        new Demo();
+
+
+        System.out.println(new Demo().hashCode());
+
         new Demo();
         new Demo();
         System.gc();

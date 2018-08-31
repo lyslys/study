@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kyexpress.vms.vehicle.provider.mapper.FenceLandmarkMapper">
+    <resultMap id="BaseResultMap" type="com.kyexpress.vms.vehicle.api.model.FenceLandmark">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="fence_name" jdbcType="VARCHAR" property="fenceName"/>
+        <result column="fence_type" jdbcType="INTEGER" property="fenceType"/>
+        <result column="area" jdbcType="DECIMAL" property="area"/>
+        <result column="range" jdbcType="INTEGER" property="range"/>
+        <result column="site_type" jdbcType="INTEGER" property="siteType"/>
+        <result column="dept_id" jdbcType="BIGINT" property="deptId"/>
+        <result column="longitude" jdbcType="DECIMAL" property="longitude"/>
+        <result column="latitude" jdbcType="DECIMAL" property="latitude"/>
+        <result column="position" jdbcType="VARCHAR" property="position"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="isalarm" jdbcType="TINYINT" property="isalarm"/>
+        <result column="vehicle_id" jdbcType="BIGINT" property="vehicleId"/>
+        <result column="in_alarm" jdbcType="TINYINT" property="inAlarm"/>
+        <result column="out_alarm" jdbcType="TINYINT" property="outAlarm"/>
+        <result column="stop_car_alarm" jdbcType="INTEGER" property="stopCarAlarm"/>
+        <result column="speeding_alarm" jdbcType="TINYINT" property="speedingAlarm"/>
+        <result column="speeding_speed" jdbcType="INTEGER" property="speedingSpeed"/>
+        <result column="enable_flag" jdbcType="TINYINT" property="enableFlag"/>
+        <result column="create_user" jdbcType="INTEGER" property="createUser"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_user" jdbcType="INTEGER" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+    <sql id="BaseTable">
+        fence_landmark
+    </sql>
+
+    <!--在实体添加  List<String> vehicleIds 字段接收-->
+    <resultMap id="searchMap" extends="BaseResultMap" type="com.kyexpress.vms.vehicle.api.model.FenceLandmark">
+        <collection property="vehicleIds" column="id" select="queryLandmarkVehicleByLandmarkId"/>
+    </resultMap>
+
+    <select id="search" resultMap="searchMap">
+     SELECT
+        fence_name,
+        site_type,
+        is_alarm,
+        in_alarm,
+        out_alarm,
+        stop_car_in,
+        stop_car_out,
+        stop_car_alarm,
+        speeding_alarm,
+        speeding_speed,
+        k.id as id
+    FROM
+        fence_landmark k
+    LEFT JOIN auth_center.department t ON k.dept_id = t.id
+    </select>
+
+    <select id="queryLandmarkVehicleByLandmarkId" resultType="String">
+        select vehicle_id from fence_landmark_vehicle where fence_landmark_id = #{id}
+    </select>
+
+    <!--  (select group_concat(d.node_id) from user_vehicle_dept d where user_id=a.id and d.enabled_flag) as node_str   "nodeStr": "1,50,60" -->
+
+</mapper>
