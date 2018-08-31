@@ -1,4 +1,5 @@
-package com.utils.excel;
+package com.model;
+
 
 public class User{
 
