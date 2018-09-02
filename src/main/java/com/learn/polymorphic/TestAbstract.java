@@ -1,5 +1,19 @@
 package com.learn.polymorphic;
 
+/**
+ * 抽象类和接口的异同点
+ *
+ * 相同点：
+ *       都是不断向上抽取而来的
+ *
+ * 不同点：
+ *       1.抽象类需要被继承，而且只能单继承
+ *         接口需要被实现，而且可以多实现
+ *       2.抽象类中可以定义抽象方法和非抽象方法，子类继承后，可以直接使用非抽象方法
+ *         接口中只能定义抽象方法，必须由子类去实现
+ *       3.抽象类的继承，是is a 关系，在定义该体系的基本共性内容
+ *         接口的实现是like a 关系，在定义体系额外功能
+ */
 public class TestAbstract {
 
     public static void main(String[] args) {
@@ -59,55 +73,12 @@ interface Line{
  */
 abstract class Shape implements Line,Color{
 
-    private double sideLength;        //边长
-    private double height;            //高
-
-    private double r; //声明半径
-    private final double PI = 3.14;    //声明π
-
-    Shape(double sideLength,double height){
-        this.sideLength = sideLength;
-        this.height = height;
-    }
-
-    Shape(double r){
-        this.r = r;
-    }
-
     //计算周长
     public abstract double perimeter();
 
     //计算面积
     public abstract double area();
 
-
-    public double getSideLength() {
-        return sideLength;
-    }
-
-    public void setSideLength(double sideLength) {
-        this.sideLength = sideLength;
-    }
-
-    public double getHeight() {
-        return height;
-    }
-
-    public void setHeight(double height) {
-        this.height = height;
-    }
-
-    public double getR() {
-        return r;
-    }
-
-    public void setR(double r) {
-        this.r = r;
-    }
-
-    public double getPI() {
-        return PI;
-    }
 }
 
 /**
@@ -115,8 +86,12 @@ abstract class Shape implements Line,Color{
  */
 class Rectangle extends Shape{
 
-    Rectangle(double sideLength, double height) {
-        super(sideLength, height);
+    private double sideLength;        //边长
+    private double height;            //高
+
+    Rectangle(double sideLength,double height){
+        this.sideLength = sideLength;
+        this.height = height;
     }
 
     @Override
@@ -138,6 +113,23 @@ class Rectangle extends Shape{
     public void format() {
         System.out.println("矩形用粗线画");
     }
+
+    public double getSideLength() {
+        return sideLength;
+    }
+
+    public void setSideLength(double sideLength) {
+        this.sideLength = sideLength;
+    }
+
+    public double getHeight() {
+        return height;
+    }
+
+    public void setHeight(double height) {
+        this.height = height;
+    }
+
 }
 
 /**
@@ -145,8 +137,11 @@ class Rectangle extends Shape{
  */
 class Circle extends Shape{
 
-    Circle(double r) {
-        super(r);
+    private double r; //声明半径
+    private final double PI = 3.14;    //声明π
+
+    Circle(double r){
+        this.r = r;
     }
 
     @Override
@@ -167,5 +162,17 @@ class Circle extends Shape{
     @Override
     public void format() {
         System.out.println("圆形用细线画");
+    }
+
+    public double getR() {
+        return r;
+    }
+
+    public void setR(double r) {
+        this.r = r;
+    }
+
+    public double getPI() {
+        return PI;
     }
 }

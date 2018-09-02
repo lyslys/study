@@ -5,9 +5,8 @@ import java.util.*;
 public class Test {
 
     public static void main(String[] args) {
-        Collection collection = new ArrayList();
 
-        RandomAccess access = new ArrayList();
+        Collection collection = new LinkedList();
 
         collection.add("hello");
         int i = 6;
@@ -19,5 +18,6 @@ public class Test {
         collection2.add("ccc");
         System.out.println(collection2.size());
         System.out.println(collection2);
+
     }
 }

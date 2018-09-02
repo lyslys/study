@@ -22,9 +22,9 @@
 
 package com.controller;
 
+import com.model.User;
 import com.utils.excel.CommonUtils;
 import com.utils.excel.ExcelUtils;
-import com.utils.excel.User;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
