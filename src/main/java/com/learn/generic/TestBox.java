@@ -29,5 +29,22 @@ public class TestBox {
             System.out.println(bigBox.next());
         }
 
+        String str = new IBox<String>(){
+
+            @Override
+            public String next() {
+                return "阿萨德阿萨德阿萨德阿萨德";
+            }
+        }.next();
+
+        System.out.println(str);
+
+        Runnable runnable = () -> {
+            System.out.println("多线程");
+        };
+
+        Thread thread = new Thread(runnable);
+        thread.start();
+
     }
 }

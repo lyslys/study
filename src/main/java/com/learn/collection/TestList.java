@@ -78,7 +78,7 @@ public class TestList {
         userList.add(user);
         userList.add(user2);
         userList.add(user3);
-        Collections.sort(userList);
+    //    Collections.sort(userList);
         System.out.println(userList);
 
     }
