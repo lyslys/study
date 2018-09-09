@@ -1,30 +1,10 @@
-/**************************************************************************/
-/*                                                                        */
-/* Copyright (c) 2017 KYE Company                                       */
-/* 跨越速运集团有限公司版权所有                                           */
-/*                                                                        */
-/* PROPRIETARY RIGHTS of KYE Company are involved in the                */
-/* subject matter of this material. All manufacturing, reproduction, use, */
-/* and sales rights pertaining to this subject matter are governed by the */
-/* license agreement. The recipient of this software implicitly accepts   */
-/* the terms of the license.                                              */
-/* 本软件文档资料是跨越速运集团有限公司的资产，任何人士阅读和                   */
-/* 使用本资料必须获得相应的书面授权，承担保密责任和接受相应的法律约束。                 */
-/*                                                                        */
-/**************************************************************************/
-
-/**
-  * <pre>
-  * 作   者：zhugp
-  * 创建日期：2018-5-28
-  * </pre>
-  */
-
 package com.controller;
 
+import com.model.User;
 import com.utils.excel.CommonUtils;
 import com.utils.excel.ExcelUtils;
-import com.model.User;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -36,9 +16,24 @@ import java.util.List;
 @RestController
 public class TestController{
 
+    @Autowired
+    private Resource resource;
+
     @RequestMapping("/springboot")
     public String Hello() {
         return "Hello SpringBoot!";
+    }
+
+    @RequestMapping("/getRes")
+    public Resource getRes() {
+        Resource resourceNew = new Resource();
+        BeanUtils.copyProperties(resource,resourceNew);
+        return resourceNew;
+    }
+
+    @RequestMapping("/getR")
+    public String getR() {
+        return "66";
     }
 
     @RequestMapping("/excel")
