@@ -11,10 +11,10 @@ public class TestFtlController {
     @Autowired
     private Resource resource;
 
-    @RequestMapping("/index")
+    @RequestMapping("studyIndex")
     public String index(ModelMap modelMap) {
         modelMap.addAttribute("resource",resource);
-        return "index";
+        return "studyIndex";
     }
 
     @RequestMapping("/indexfr")
