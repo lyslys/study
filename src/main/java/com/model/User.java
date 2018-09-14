@@ -7,6 +7,16 @@ public class User{
 
     private String sex;
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "age='" + age + '\'' +
+                ", sex='" + sex + '\'' +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
+
     private String name;
 
     public String password;

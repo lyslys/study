@@ -2,10 +2,7 @@ package com.learn.collection;
 
 import com.model.User;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * ArrayList  读快改慢
@@ -24,6 +21,8 @@ public class TestList {
         list.add("a688");
         list.add("a6667");
         list.add(1,"a22222");
+
+        System.out.println("----------->"+list.contains("a22262"));
 
         System.out.println(list.isEmpty());
 
@@ -81,6 +80,34 @@ public class TestList {
     //    Collections.sort(userList);
         System.out.println(userList);
 
+
+
+
+        //---------------->
+        Map<String,String> map = new HashMap<String, String>();
+        map.put("6","9");
+        map.put("66","99");
+        Map<String,String> map1 = new HashMap<String, String>();
+        map1.put("7","90");
+        Map<String,String> map2 = new HashMap<String, String>();
+        map2.put("8","19");
+
+        list.add(map);
+        list.add(map1);
+        list.add(map2);
+
+        List list66 = new LinkedList();
+        Map<String,String> map3 = new HashMap<String, String>();
+        map3.put("6","9");
+        map3.put("66","99");
+        list66.add(map3);
+
+
+        System.out.println("------->开始");
+        System.out.println(list);
+        System.out.println(list.removeAll(list66));
+        System.out.println(list66);
+        System.out.println(list);
     }
 
 }
