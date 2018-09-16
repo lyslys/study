@@ -1,5 +1,6 @@
 package com.controller;
 
+import com.utils.IpUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -12,9 +13,15 @@ public class TestFtlController {
     private Resource resource;
 
     @RequestMapping("studyIndex")
-    public String index(ModelMap modelMap) {
+    public String studyIndex(ModelMap modelMap) {
         modelMap.addAttribute("resource",resource);
         return "studyIndex";
+    }
+
+    @RequestMapping("index")
+    public String index(ModelMap modelMap) {
+        modelMap.addAttribute("ip", IpUtils.getOuterNetIp());
+        return "ip";
     }
 
     @RequestMapping("/indexfr")
