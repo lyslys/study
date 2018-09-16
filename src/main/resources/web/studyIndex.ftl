@@ -5,7 +5,11 @@
     <title>模版引擎</title>
 </head>
 <body>
-freemarker模版引擎
+freemarker模版引擎<marquee direction="right" >
+
+    <h1 style="color: red">文字</h1>
+
+</marquee>
 <h1>${resource.name}</h1>
 <h1>${resource.url}</h1>
 <h1>${resource.language}</h1>
