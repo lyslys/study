@@ -12,6 +12,8 @@ firewall-cmd  --reload
 
 ### 关于硬盘空间的命令
 `df -lh`
+用df 命令查看查看目录所在分区, 例如查看/root目录所在分区
+`df -h /root`
 
 nohup java -jar xxx.jar&命令，则程序会在后台一直运行，
 

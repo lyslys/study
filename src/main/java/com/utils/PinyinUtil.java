@@ -22,6 +22,7 @@ public class PinyinUtil {
     }
 
     public static void main(String[] args) {
+
         System.out.println(getPinYinHeadChar("大伦"));
 
     }
