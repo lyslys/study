@@ -6,3 +6,6 @@ select @@GLOBAL.sql_mode;
 set sql_mode ='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION';
 
 # 时间 timestamp 类型的字段 CURRENT_TIMESTAMP 可以这样设置默认值
+
+#模糊查询
+AND company_name LIKE concat ('%',#{criteria.vo.serviceCompanyName},'%')
