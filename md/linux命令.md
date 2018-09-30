@@ -17,4 +17,8 @@ firewall-cmd  --reload
 
 nohup java -jar xxx.jar&命令，则程序会在后台一直运行，
 
+nohup java -jar /home/study/concurrency-0.0.1-SNAPSHOT.jar &
+
+setsid /home/plugin/linux_amd64/./sunny clientid 1de02b3d984af998 &
+
 
