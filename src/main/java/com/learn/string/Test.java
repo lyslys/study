@@ -9,6 +9,17 @@ public class Test {
 
         String image = imgUrl.substring(imgUrl.lastIndexOf("/")+1);
         System.out.println(image);
+
+
+        String [] urlArray = imgUrl.split("/");
+
+        System.out.println(urlArray[urlArray.length-2]);
+
+        Object id = 66666;
+        Long idL = (Long)id;
+        System.out.println(idL);
+
+
     }
 
 }

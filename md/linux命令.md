@@ -21,4 +21,6 @@ nohup java -jar /home/study/concurrency-0.0.1-SNAPSHOT.jar &
 
 setsid /home/plugin/linux_amd64/./sunny clientid 1de02b3d984af998 &
 
+nohup java -jar eureka-server.jar &
+
 
