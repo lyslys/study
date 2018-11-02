@@ -15,7 +15,7 @@ package com.learn.thread;
  *
  */
 
-class Demo{
+class Demo {
     @Override
     protected void finalize() throws Throwable {
         System.out.println("demo ok");
@@ -32,7 +32,10 @@ public class TestThread {
 
         new Demo();
         new Demo();
-        System.gc();
+//        System.gc();
         System.out.println("hello word!");
+
+        System.out.println(Thread.currentThread().getId());
+        System.out.println(Thread.currentThread().getName());
     }
 }
