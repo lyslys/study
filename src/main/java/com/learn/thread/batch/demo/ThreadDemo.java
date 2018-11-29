@@ -37,9 +37,9 @@ public class ThreadDemo {
         ThredTrain thredTrain = new ThredTrain();
         Thread t1 = new Thread(thredTrain,"窗口①");
         Thread t2 = new Thread(thredTrain,"窗口②");
-        t1.setDaemon(true);
+//        t1.setDaemon(true);
         t1.start();
-        t2.setDaemon(true);
+//        t2.setDaemon(true);
         t2.start();
 
         try {

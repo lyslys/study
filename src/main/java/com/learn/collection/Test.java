@@ -36,7 +36,15 @@ public class Test {
 //            System.out.println(in);
 //        }
 
-        aa();
+       // aa();
+
+
+        List<Integer> arrayList  =  Arrays.asList(1,2,3);
+
+        List arrList = new ArrayList(arrayList);
+        arrList.add(4);
+        System.out.println(arrList.toString());
+
 
     }
 
