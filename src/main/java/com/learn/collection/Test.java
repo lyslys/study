@@ -23,6 +23,8 @@ public class Test {
         System.out.println(collection.size());
         System.out.println(collection);
 
+        System.out.println(((LinkedList) collection).get(0));
+
         ArrayList collection2 = new ArrayList();
         collection2.add("ccc");
         System.out.println(collection2.size());

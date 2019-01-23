@@ -22,9 +22,17 @@ public class TestList {
         list.add("a6667");
         list.add(1,"a22222");
 
+        Iterator it = list.iterator();
+
+        while (it.hasNext()){
+            System.out.println(it.next());
+        }
+
         System.out.println("----------->"+list.contains("a22262"));
 
         System.out.println(list.isEmpty());
+
+
 
         Collections.sort(list);
 
@@ -108,6 +116,12 @@ public class TestList {
         System.out.println(list.removeAll(list66));
         System.out.println(list66);
         System.out.println(list);
+
+        List list7 = new Vector();
+        list7.add("666");
+
+        System.out.println(list7);
+
     }
 
 }

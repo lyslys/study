@@ -1,8 +1,7 @@
 package com.learn.collection;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class TestMap {
     public static void main(String[] args) {
@@ -56,12 +55,25 @@ public class TestMap {
 
         Map<String,Integer> map6 = new TreeMap<String,Integer>();
 
-        map6.put("kkk",new Integer(666666));
+        map6.put("kkk",new Integer(11));
+        map6.put("CC",new Integer(985566));
+        map6.put("AA",new Integer(52696));
 
         if(map6.containsKey("kkk")){
             int i = map6.get("kkk");
             System.out.println(i);
         }
+
+        System.out.println(map6);
+
+        Iterator it = map6.keySet().iterator();
+        while (it.hasNext()){
+            System.out.println(it.next());
+        }
+
+        Map<String,Integer> map7 = new ConcurrentHashMap<String,Integer>();
+
+        Map<String,Integer> map8 = new Hashtable<String,Integer>();
 
     }
 }
