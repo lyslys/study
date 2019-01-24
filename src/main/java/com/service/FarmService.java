@@ -9,11 +9,13 @@ import java.math.BigDecimal;
 @Service
 public class FarmService {
 
-    @Autowired
+ /*   @Autowired
     private FarmMapper farmMapper;
 
     public int saveFarm(String name, Long minute, BigDecimal price,String storeName){
         return farmMapper.insert(name,minute,price,storeName);
     }
+
+    */
 
 }
