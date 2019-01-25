@@ -1,4 +1,4 @@
-package com.result;
+package com.model.result;
 
 public class Result<T> {
     private int code;
