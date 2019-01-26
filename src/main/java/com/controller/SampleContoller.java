@@ -5,6 +5,7 @@ import com.model.result.CodeMsg;
 import com.model.result.Result;
 import com.service.LdUserService;
 import com.utils.redis.RedisService;
+import com.utils.redis.prefix.LdUserKey;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,16 +46,18 @@ public class SampleContoller extends BaseController {
     }
 
     @RequestMapping("/redis/get")
-    public Result<Long> redisGet() {
-        Long vl = redisService.get("k",Long.class);
-        return Result.success(vl);
+    public Result<LdUser> redisGet() {
+        LdUser ldUser = redisService.get(LdUserKey.getById,""+1, LdUser.class);
+        return Result.success(ldUser);
     }
 
     @RequestMapping("/redis/set")
-    public Result<String> redisSet() {
-        redisService.set("k3","hello,恭喜发财");
-        String str = redisService.get("k3",String.class);
-        return Result.success(str);
+    public Result<Boolean> redisSet() {
+        LdUser ldUser = new LdUser();
+        ldUser.setId(1);
+        ldUser.setName("111111");
+        redisService.set(LdUserKey.getById,""+1,ldUser);
+        return Result.success(true);
     }
 
 }
