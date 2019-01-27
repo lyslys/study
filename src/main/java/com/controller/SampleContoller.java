@@ -54,7 +54,7 @@ public class SampleContoller extends BaseController {
     @RequestMapping("/redis/set")
     public Result<Boolean> redisSet() {
         LdUser ldUser = new LdUser();
-        ldUser.setId(1);
+        ldUser.setId(1L);
         ldUser.setName("111111");
         redisService.set(LdUserKey.getById,""+1,ldUser);
         return Result.success(true);

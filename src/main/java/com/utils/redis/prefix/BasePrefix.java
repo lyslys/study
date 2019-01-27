@@ -1,7 +1,7 @@
 package com.utils.redis.prefix;
 
 /**
- * key 加上前缀 例如： 用户前缀 或者 订单前缀
+ * key 加上前缀 例如： 用户前缀 或者 订单前缀     模版模式
  */
 public abstract class BasePrefix implements KsyPrefix {
 

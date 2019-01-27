@@ -12,6 +12,9 @@ public interface LdUserMapper {
     @Select("select * from ld_user where id = #{id}")
     LdUser getById(@Param("id")int id);
 
+    @Select("select * from ld_user where mobile = #{mobile}")
+    LdUser getByMobile(@Param("mobile")String mobile);
+
     @Insert("insert into ld_user (id,name) values (#{id},#{name})")
     int insert(LdUser ldUser);
 }
