@@ -1,8 +1,18 @@
 package com.model.dto;
 
+import com.utils.validator.IsMobile;
+import org.hibernate.validator.constraints.Length;
+
+import javax.validation.constraints.NotNull;
+
 public class LoginDto {
 
+    @NotNull
+    @IsMobile
     private String mobile;
+
+    @NotNull
+    @Length(min=32)
     private String password;
 
     public String getMobile() {
