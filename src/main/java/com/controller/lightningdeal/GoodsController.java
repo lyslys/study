@@ -20,7 +20,7 @@ public class GoodsController {
 	LdUserService ldUserService;
 
     @RequestMapping("/to_list")
-    public String list((HttpServletResponse response, Model model,
+    public String list(HttpServletResponse response, Model model,
                        @CookieValue(value = LdUserService.COOK1_NAME_TOKEN,required = false) String cookieToken,
                        @RequestParam(value = LdUserService.COOK1_NAME_TOKEN,required = false) String paramToken) {
         if(StringUtils.isEmpty(cookieToken) && StringUtils.isEmpty(paramToken)){
