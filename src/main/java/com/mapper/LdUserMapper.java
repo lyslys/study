@@ -1,6 +1,6 @@
 package com.mapper;
 
-import com.model.LdUser;
+import com.model.miaosha.LdUser;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;

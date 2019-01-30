@@ -1,16 +1,16 @@
 package com.controller.lightningdeal;
 
-import com.model.LdUser;
+import com.model.dto.GoodsVo;
+import com.model.miaosha.LdUser;
+import com.service.GoodsService;
 import com.service.LdUserService;
-import org.apache.commons.lang3.StringUtils;
+import com.utils.redis.RedisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 @Controller
 @RequestMapping("/goods")
@@ -19,16 +19,18 @@ public class GoodsController {
 	@Autowired
 	LdUserService ldUserService;
 
+    @Autowired
+    RedisService redisService;
+
+    @Autowired
+    GoodsService goodsService;
+
     @RequestMapping("/to_list")
-    public String list(HttpServletResponse response, Model model,
-                       @CookieValue(value = LdUserService.COOK1_NAME_TOKEN,required = false) String cookieToken,
-                       @RequestParam(value = LdUserService.COOK1_NAME_TOKEN,required = false) String paramToken) {
-        if(StringUtils.isEmpty(cookieToken) && StringUtils.isEmpty(paramToken)){
-            return "lightningdeal/login";
-        }
-        String token = StringUtils.isEmpty(paramToken)?cookieToken:paramToken;
-        LdUser ldUser = ldUserService.getByToken(response,token);
+    public String list(Model model,LdUser ldUser ) {
     	model.addAttribute("user", ldUser);
+        //查询商品列表
+        List<GoodsVo> goodsList = goodsService.listGoodsVo();
+        model.addAttribute("goodsList", goodsList);
         return "lightningdeal/goods_list";
     }
     

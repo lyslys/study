@@ -1,7 +1,7 @@
 package com.service;
 
 import com.mapper.LdUserMapper;
-import com.model.LdUser;
+import com.model.miaosha.LdUser;
 import com.model.dto.LoginDto;
 import com.model.result.CodeMsg;
 import com.utils.MD5Util;
@@ -39,13 +39,12 @@ public class LdUserService {
         LdUser ldUser = redisService.get(LdUserKey.token, token, LdUser.class);
         //延长有效期
         if(ldUser != null){
-            addCookie(response,ldUser);
+            addCookie(response,token,ldUser);
         }
         return ldUser;
     }
 
-    private void addCookie(HttpServletResponse response,LdUser ldUser){
-        String token = UUIDUtil.uuid();
+    private void addCookie(HttpServletResponse response,String token,LdUser ldUser){
         redisService.set(LdUserKey.token, token, ldUser);
         Cookie cookie = new Cookie(COOK1_NAME_TOKEN, token);
         cookie.setMaxAge(LdUserKey.token.expireSeconds());
@@ -91,7 +90,8 @@ public class LdUserService {
             throw new GlobalException(CodeMsg.PASSWORD_ERROR);
         }
         //生成cookie
-        addCookie(response,ldUser);
+        String token = UUIDUtil.uuid();
+        addCookie(response,token,ldUser);
         return true;
 
     }

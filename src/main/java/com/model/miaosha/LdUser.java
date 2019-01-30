@@ -1,4 +1,4 @@
-package com.model;
+package com.model.miaosha;
 
 import java.util.Date;
 
