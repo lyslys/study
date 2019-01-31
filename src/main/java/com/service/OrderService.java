@@ -2,6 +2,7 @@ package com.service;
 
 import com.mapper.OrderMapper;
 import com.model.dto.GoodsVo;
+import com.model.miaosha.LdUser;
 import com.model.miaosha.MiaoshaOrder;
 import com.model.miaosha.MiaoshaUser;
 import com.model.miaosha.OrderInfo;
@@ -22,7 +23,7 @@ public class OrderService {
 	}
 
 	@Transactional
-	public OrderInfo createOrder(MiaoshaUser user, GoodsVo goods) {
+	public OrderInfo createOrder(LdUser user, GoodsVo goods) {
 		OrderInfo orderInfo = new OrderInfo();
 		orderInfo.setCreateDate(new Date());
 		orderInfo.setDeliveryAddrId(0L);

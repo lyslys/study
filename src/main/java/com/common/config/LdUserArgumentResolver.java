@@ -34,18 +34,21 @@ public class LdUserArgumentResolver implements HandlerMethodArgumentResolver {
         HttpServletResponse response = webRequest.getNativeResponse(HttpServletResponse.class);
 
         String paramToken = request.getParameter(LdUserService.COOK1_NAME_TOKEN);
-        String cookieToken = getCookieValue(request,LdUserService.COOK1_NAME_TOKEN);
-        if(StringUtils.isEmpty(cookieToken) && StringUtils.isEmpty(paramToken)){
+        String cookieToken = getCookieValue(request, LdUserService.COOK1_NAME_TOKEN);
+        if (StringUtils.isEmpty(cookieToken) && StringUtils.isEmpty(paramToken)) {
             return null;
         }
-        String token = StringUtils.isEmpty(paramToken)?cookieToken:paramToken;
-        return  ldUserService.getByToken(response,token);
+        String token = StringUtils.isEmpty(paramToken) ? cookieToken : paramToken;
+        return ldUserService.getByToken(response, token);
     }
 
     private String getCookieValue(HttpServletRequest request, String cook1Name) {
         Cookie[] cookies = request.getCookies();
-        for(Cookie cookie:cookies){
-            if(cookie.getName().equals(cook1Name)){
+        if (cookies == null || cookies.length <= 0) {
+            return null;
+        }
+        for (Cookie cookie : cookies) {
+            if (cookie.getName().equals(cook1Name)) {
                 return cookie.getValue();
             }
         }
