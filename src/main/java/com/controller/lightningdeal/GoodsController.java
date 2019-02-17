@@ -27,6 +27,10 @@ public class GoodsController {
     @Autowired
     GoodsService goodsService;
 
+    /**
+     * QPS  79.7
+     * 500 * 10
+     */
     @RequestMapping("/to_list")
     public String list(Model model,LdUser ldUser ) {
     	model.addAttribute("user", ldUser);
