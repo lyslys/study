@@ -5,6 +5,9 @@ import com.model.dto.GoodsVo;
 import com.model.miaosha.MiaoshaGoods;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -22,6 +25,7 @@ public class GoodsService {
 		return goodsDao.getGoodsVoByGoodsId(goodsId);
 	}
 
+	@Transactional(propagation = Propagation.NEVER)
 	public void reduceStock(GoodsVo goods) {
 		MiaoshaGoods g = new MiaoshaGoods();
 		g.setGoodsId(goods.getId());
