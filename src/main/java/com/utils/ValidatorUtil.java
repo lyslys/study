@@ -2,6 +2,7 @@ package com.utils;
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -20,5 +21,6 @@ public class ValidatorUtil {
     public static void main(String[] args) {
         System.out.println(isMobile("18682121172"));
         System.out.println(isMobile("186821211729"));
+        Date date = new Date();
     }
 }

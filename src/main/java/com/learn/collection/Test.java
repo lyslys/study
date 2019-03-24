@@ -7,7 +7,6 @@ import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.*;
 
@@ -23,9 +22,13 @@ public class Test {
         System.out.println(collection.size());
         System.out.println(collection);
 
+        final Date date = new Date();
+
+
         System.out.println(((LinkedList) collection).get(0));
 
-        ArrayList collection2 = new ArrayList();
+        ArrayList collection2 = new
+                ArrayList();
         collection2.add("ccc");
         System.out.println(collection2.size());
         System.out.println(collection2);
@@ -38,10 +41,9 @@ public class Test {
 //            System.out.println(in);
 //        }
 
-       // aa();
-
-
-        List<Integer> arrayList  =  Arrays.asList(1,2,3);
+        // aa();
+        bbbbbbbbbbbbbb();
+        List<Integer> arrayList = Arrays.asList(1, 2, 3);
 
         List arrList = new ArrayList(arrayList);
         arrList.add(4);
@@ -50,13 +52,14 @@ public class Test {
 
     }
 
-    public static void aa(){
+    public static void bbbbbbbbbbbbbb() {
+
         try {
 
             File file = new File("D:/home/kyapp/uploadfile/20181022/cc.xls");
-       //     file.createNewFile();
-                Workbook wb = Workbook.getWorkbook(file);
-               System.out.println(wb.getSheet(0));
+            //     file.createNewFile();
+            Workbook wb = Workbook.getWorkbook(file);
+            System.out.println(wb.getSheet(0));
             WritableWorkbook book = Workbook.createWorkbook(file);
             WritableSheet sheet = book.createSheet("sheet11", 0);
 //                WritableWorkbook wwb = Workbook.createWorkbook(new FileOutputStream("E:\\b.xls"));

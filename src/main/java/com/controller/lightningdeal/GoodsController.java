@@ -2,7 +2,6 @@ package com.controller.lightningdeal;
 
 import com.model.dto.GoodsVo;
 import com.model.miaosha.LdUser;
-import com.model.miaosha.MiaoshaUser;
 import com.service.GoodsService;
 import com.service.LdUserService;
 import com.utils.redis.RedisService;
