@@ -1,10 +1,14 @@
 package com.controller;
 
+import com.mapper.StudentMapper;
+import com.model.Student;
 import com.model.User;
 import com.utils.excel.CommonUtils;
 import com.utils.excel.ExcelUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,6 +22,9 @@ public class TestController{
 
     @Autowired
     private Resource resource;
+
+    @Autowired
+    private StudentMapper studentMapper;
 
     @RequestMapping("/springboot")
     public String Hello() {
@@ -82,6 +89,11 @@ public class TestController{
             e.printStackTrace();
         }
 
+    }
+
+    @GetMapping("/stu/{id}")
+    public Student getStu(@PathVariable("id") Integer id){
+        return  studentMapper.getStudentById(id);
     }
     
 }
