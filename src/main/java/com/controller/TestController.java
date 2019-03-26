@@ -1,7 +1,7 @@
 package com.controller;
 
-import com.mapper.StudentMapper;
-import com.model.Student;
+import com.mapper.test.StudentMapper;
+import com.model.test.Student;
 import com.model.User;
 import com.utils.excel.CommonUtils;
 import com.utils.excel.ExcelUtils;
