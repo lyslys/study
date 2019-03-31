@@ -74,17 +74,4 @@ public class Student {
         this.gender = gender;
     }
 
-
-    @Override
-    public String toString() {
-        return "Student{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                ", high=" + high +
-                ", clsId=" + clsId +
-                ", cls=" + cls +
-                ", gender=" + gender +
-                '}';
-    }
 }
