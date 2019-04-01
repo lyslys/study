@@ -2,7 +2,6 @@ package com.controller.lightningdeal;
 
 import com.controller.BaseController;
 import com.model.dto.LoginDto;
-import com.model.result.CodeMsg;
 import com.model.result.Result;
 import com.service.LdUserService;
 import org.springframework.beans.factory.annotation.Autowired;
