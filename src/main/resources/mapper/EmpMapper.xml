@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.test.EmpMapper">
+
+    <resultMap id="query1Map" type="com.model.test.Emp">
+        <id column="empno" property="empno"/>
+        <result column="ename" property="ename"/>
+        <association property="dept" javaType="com.model.test.Dept" columnPrefix="d_">
+            <id column="deptno" property="deptno"></id>
+            <result column="dname" property="dname"/>
+            <result column="loc" property="loc"/>
+        </association>
+    </resultMap>
+
+    <select id="query1" resultMap="query1Map">
+      SELECT
+            e.empno,
+            e.ename,
+            d.deptno AS d_deptno,
+            d.dname AS d_dname,
+            d.loc AS d_loc
+        FROM
+            emp e
+        JOIN dept d ON e.deptno = d.deptno
+    </select>
+
+</mapper>

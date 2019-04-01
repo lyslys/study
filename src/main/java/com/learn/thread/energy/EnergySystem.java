@@ -30,11 +30,11 @@ public class EnergySystem {
 //            return;
 //        }
 
-        synchronized (lockObj){
+        synchronized (lockObj) {
 
             //while循坏，保证条件不满足时任务都会被条件阻挡
             //而不是继续竞争CPU资源
-            while (energyBoxes[from] <amount){
+            while (energyBoxes[from] < amount) {
                 try {
                     //条件不满足，将当前线程放入Wait set
                     lockObj.wait();

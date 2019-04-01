@@ -29,7 +29,7 @@ public class LoginContoller extends BaseController {
     @ResponseBody
     public Result<Boolean> doLogin(HttpServletResponse response, @Valid LoginDto loginDto) {
         //登录
-        return Result.success(ldUserService.login(response,loginDto));
+        return Result.success(ldUserService.login(response, loginDto));
     }
 
 }

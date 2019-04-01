@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.test.StudentMapper">
+    
+    <resultMap id="query01Map" type="com.model.test.Student">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="cls_id" property="clsId"/>
+        <result column="cId" property="cls.id"/>
+        <result column="cName" property="cls.name"/>
+    </resultMap>
+
+    <resultMap id="query02Map" type="com.model.test.Student">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="cls_id" property="clsId"/>
+        
+        <association property="cls" javaType="com.model.test.Classes">
+            <id column="cId" property="id"></id>
+            <result column="cName" property="name"/>
+        </association>
+        
+    </resultMap>
+
+    <resultMap id="query03Map" type="com.model.test.Student">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="cls_id" property="clsId"/>
+        <association property="cls" select="com.mapper.test.ClassesMapper.getById" column="{id=cls_id}" fetchType="lazy"/>
+    </resultMap>
+
+    <resultMap id="query05Map" type="com.model.test.Dept">
+        <id column="deptno" property="deptno"/>
+        <result column="dname" property="dname"/>
+        <result column="loc" property="loc"/>
+        <collection property="empList" ofType="com.model.test.Emp">
+            <id column="edeptno" property="deptno"/>
+            <result column="ename" property="ename"/>
+            <result column="job" property="job"/>
+        </collection>
+    </resultMap>
+
+    <select id="query01" resultMap="query01Map">
+           select s.id,s.name,s.cls_id,c.`name` as cName,c.id as cId  from student s left join  classes c on c.id = s.cls_id where s.id = #{id}
+    </select>
+
+    <select id="query02" resultMap="query02Map">
+           select s.id,s.name,s.cls_id,c.`name` as cName,c.id as cId  from student s left join  classes c on c.id = s.cls_id where s.id = #{id}
+    </select>
+
+    <select id="query03" resultMap="query03Map">
+           select *  from student where id = #{id}
+    </select>
+
+    <select id="query05" resultMap="query05Map">
+        select d.deptno,d.dname,e.empno,d.loc,e.deptno as edeptno,e.ename,e.job from dept d left join emp e on e.deptno = d.deptno
+        <where>
+            e.job is not null
+        </where>
+    </select>
+
+    <select id="getStudentById" resultType="com.model.test.Student">
+        select * from student where id = #{id}
+    </select>
+
+</mapper>

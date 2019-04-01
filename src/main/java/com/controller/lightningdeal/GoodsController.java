@@ -2,7 +2,6 @@ package com.controller.lightningdeal;
 
 import com.model.dto.GoodsVo;
 import com.model.miaosha.LdUser;
-import com.model.miaosha.MiaoshaUser;
 import com.service.GoodsService;
 import com.service.LdUserService;
 import com.utils.redis.RedisService;
@@ -27,6 +26,10 @@ public class GoodsController {
     @Autowired
     GoodsService goodsService;
 
+    /**
+     * QPS  79.7
+     * 500 * 10
+     */
     @RequestMapping("/to_list")
     public String list(Model model,LdUser ldUser ) {
     	model.addAttribute("user", ldUser);

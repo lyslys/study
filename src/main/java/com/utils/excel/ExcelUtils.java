@@ -1,5 +1,6 @@
 package com.utils.excel;
 
+import com.common.Allenum.AccountConstant;
 import com.utils.DateUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.hssf.usermodel.*;
@@ -164,8 +165,10 @@ public class ExcelUtils {
                         cell.setCellStyle(isStyle?bottomCellStyle:cellStyle);
                     }
 
-                    if( CommonUtils.changeMap.get(tempStr) != null){//转换数据字典
-                        cell.setCellValue(CommonUtils.get(objectValue, CommonUtils.changeMap.get(tempStr).toString()));
+                    if( CommonUtils.dataMap.get(tempStr) != null){//转换数据字典
+
+                        cell.setCellValue(AccountConstant.MonthAccountStatusEnum.getEnum(((Integer)objectValue).byteValue()).getText());
+
                     }else{
 
                         if(objectValue instanceof Date){
@@ -204,6 +207,11 @@ public class ExcelUtils {
     public static Map<String,Object>  getClassValue(Object obj) throws  Exception{
 
         Map<String,Object> map = new HashMap<String,Object>();
+
+        if(obj instanceof Map){
+            map.putAll((Map)obj);
+            return map;
+        }
 
         Class clazz = obj.getClass();
 //        System.out.println("类的名称是：" + clazz.getName());
