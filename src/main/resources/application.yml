@@ -24,7 +24,7 @@ spring:
         maxWait: 60000
         minEvictableIdleTimeMillis: 300000
         minIdle: 500
-        password: 123456
+        password: s&fIH520]LOVE168
         poolPreparedStatements: true
         testOnBorrow: false
         testOnReturn: false
