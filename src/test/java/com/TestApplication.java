@@ -50,6 +50,7 @@ public class TestApplication{
 		System.out.println(student.getName());
 //		System.out.println(student.getCls().getName());
 
+
 	}
 
 	@Test
