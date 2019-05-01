@@ -221,7 +221,34 @@ public class DateUtils {
         return result;
     }
 
+    /**
+     * 日期转星期
+     *
+     * @param datetime
+     * @return
+     */
+    public static String dateToWeek(String datetime) {
+        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+        String[] weekDays = { "星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六" };
+        Calendar cal = Calendar.getInstance(); // 获得一个日历
+        Date datet = null;
+        try {
+            datet = f.parse(datetime);
+            cal.setTime(datet);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        int w = cal.get(Calendar.DAY_OF_WEEK) - 1; // 指示一个星期中的某天。
+        if (w < 0)
+            w = 0;
+        return weekDays[w];
+    }
+
+
     public static void main(String[] args) throws Exception{
+
+        System.out.println(dateToWeek("2019-02-21"));
+
 //        System.out.println((1533266141000L-1530414936000L)/(1000*60*60));
 //            System.out.println(new BigDecimal(200).divide(new BigDecimal(792),2, RoundingMode.HALF_UP));
 //        String  date = getDate(new Date());
