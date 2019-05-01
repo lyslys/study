@@ -24,14 +24,14 @@ spring:
         maxWait: 60000
         minEvictableIdleTimeMillis: 300000
         minIdle: 500
-        password: s&fIH520]LOVE168
+        password: 36556666
         poolPreparedStatements: true
         testOnBorrow: false
         testOnReturn: false
         testWhileIdle: true
         timeBetweenEvictionRunsMillis: 60000
         type: com.alibaba.druid.pool.DruidDataSource
-        url: jdbc:mysql://111.230.251.208:3306/home?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false
+        url: jdbc:mysql://111.230.251.208:3306/smbms?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false
         username: root
         validationQuery: select 'x'
     freemarker:
