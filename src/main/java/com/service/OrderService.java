@@ -4,10 +4,10 @@ import com.mapper.OrderMapper;
 import com.model.dto.GoodsVo;
 import com.model.miaosha.LdUser;
 import com.model.miaosha.MiaoshaOrder;
-import com.model.miaosha.MiaoshaUser;
 import com.model.miaosha.OrderInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
@@ -42,5 +42,10 @@ public class OrderService {
 		orderDao.insertMiaoshaOrder(miaoshaOrder);
 		return orderInfo;
 	}
-	
+
+	@Transactional(	propagation = Propagation.REQUIRED)
+	public int updateGoods() {
+		return orderDao.updateGoods();
+	}
+
 }

@@ -1,20 +1,13 @@
 package com.controller.lightningdeal;
 
 import com.controller.BaseController;
-import com.model.dto.LoginDto;
 import com.model.miaosha.LdUser;
 import com.model.result.Result;
-import com.service.LdUserService;
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.InitializingBean;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import javax.servlet.http.HttpServletResponse;
-import javax.validation.Valid;
 
 
 @Controller

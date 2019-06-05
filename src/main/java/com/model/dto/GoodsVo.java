@@ -1,14 +1,15 @@
 package com.model.dto;
 
-import java.util.Date;
-
 import com.model.miaosha.Goods;
+
+import java.util.Date;
 
 public class GoodsVo extends Goods {
 	private Double miaoshaPrice;
 	private Integer stockCount;
 	private Date startDate;
 	private Date endDate;
+	private Long id;
 	public Integer getStockCount() {
 		return stockCount;
 	}

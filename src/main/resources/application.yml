@@ -1,5 +1,3 @@
-file:
-    path: E:/testfile
 mybatis:
     config-location: classpath:mybatis-config.xml
     mapperLocations: classpath:mapper/*.xml
@@ -12,8 +10,6 @@ redis:
     poolMaxWait: 500
     port: 6379
     timeout: 10
-server:
-    port: 8888
 spring:
     datasource:
         driver-class-name: com.mysql.jdbc.Driver
@@ -24,14 +20,14 @@ spring:
         maxWait: 60000
         minEvictableIdleTimeMillis: 300000
         minIdle: 500
-        password: 36556666
+        password: 123456
         poolPreparedStatements: true
         testOnBorrow: false
         testOnReturn: false
         testWhileIdle: true
         timeBetweenEvictionRunsMillis: 60000
         type: com.alibaba.druid.pool.DruidDataSource
-        url: jdbc:mysql://111.230.251.208:3306/smbms?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false
+        url: jdbc:mysql://127.0.0.1:3306/ipks?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false
         username: root
         validationQuery: select 'x'
     freemarker:
@@ -44,6 +40,8 @@ spring:
         request-context-attribute: request
         suffix: .ftl
         template-loader-path: classpath:/web
+    profiles:
+        active: dev
 logging:
     level:
       com.mapper : debug

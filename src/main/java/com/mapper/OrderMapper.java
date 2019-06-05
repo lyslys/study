@@ -18,5 +18,9 @@ public interface OrderMapper {
 	@Insert("insert into miaosha_order (user_id, goods_id, order_id)values(#{userId}, #{goodsId}, #{orderId})")
 	public int insertMiaoshaOrder(MiaoshaOrder miaoshaOrder);
 
+
+	@Update("update goods set goods_price=goods_price-100 where id = 1 ")
+	int updateGoods();
+
 	
 }

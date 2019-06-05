@@ -13,8 +13,10 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/my/**").addResourceLocations("file:"+filePath);
+//        registry.addResourceHandler("*/**").addResourceLocations("file:"+filePath);
         System.out.println("----------------------666666-----------------------------");
         System.out.println("66");
+        System.out.println("配置上传文件路径的地址  --->"+filePath);
     }
 
 }

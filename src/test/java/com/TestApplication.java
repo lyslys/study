@@ -6,6 +6,7 @@ import com.mapper.test.StudentMapper;
 import com.model.test.Dept;
 import com.model.test.Emp;
 import com.model.test.Student;
+import com.service.GoodsService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,7 +51,6 @@ public class TestApplication{
 		System.out.println(student.getName());
 //		System.out.println(student.getCls().getName());
 
-
 	}
 
 	@Test
@@ -85,6 +85,17 @@ public class TestApplication{
 		System.out.println(student.getName());
 		Student student2 = studentMapper.query03(1);
 		System.out.println(student2.getName());
+	}
+
+
+	@Autowired
+	GoodsService goodsService;
+
+	@Test
+	public void test6() throws SQLException {
+//		List list  = goodsMapper.listGoodsVo();
+//		System.out.println(list);
+		goodsService.updateStock();
 	}
 
 }
