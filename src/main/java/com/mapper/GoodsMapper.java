@@ -1,7 +1,7 @@
 package com.mapper;
 
 
-import com.model.dto.GoodsVo;
+import com.model.vo.GoodsVo;
 import com.model.miaosha.MiaoshaGoods;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;

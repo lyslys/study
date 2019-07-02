@@ -1,9 +1,9 @@
 package com.controller.lightningdeal;
 
 import com.controller.BaseController;
-import com.model.dto.LoginDto;
+import com.model.vo.LoginVo;
 import com.model.result.Result;
-import com.service.LdUserService;
+import com.service.MiaoshaUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +18,7 @@ import javax.validation.Valid;
 public class LoginContoller extends BaseController {
 
     @Autowired
-    private LdUserService ldUserService;
+    private MiaoshaUserService miaoshaUserService;
 
     @RequestMapping("/to_login")
     public String toLogin() {
@@ -27,9 +27,10 @@ public class LoginContoller extends BaseController {
 
     @RequestMapping("/do_login")
     @ResponseBody
-    public Result<Boolean> doLogin(HttpServletResponse response, @Valid LoginDto loginDto) {
+    public Result<String> doLogin(HttpServletResponse response, @Valid LoginVo loginVo) {
         //登录
-        return Result.success(ldUserService.login(response, loginDto));
+        String token = miaoshaUserService.login(response, loginVo);
+        return Result.success(token);
     }
 
 }

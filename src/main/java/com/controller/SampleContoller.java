@@ -1,11 +1,12 @@
 package com.controller;
 
-import com.model.miaosha.LdUser;
+import com.model.miaosha.MiaoshaUser;
 import com.model.result.CodeMsg;
 import com.model.result.Result;
-import com.service.LdUserService;
+import com.rabbitmq.MQSender;
+import com.service.MiaoshaUserService;
 import com.utils.redis.RedisService;
-import com.utils.redis.prefix.LdUserKey;
+import com.utils.redis.MiaoshaUserKey;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,10 +17,41 @@ import org.springframework.web.bind.annotation.RestController;
 public class SampleContoller extends BaseController {
 
     @Autowired
-    private LdUserService ldUserService;
+    private MiaoshaUserService miaoUserService;
 
     @Autowired
     private RedisService redisService;
+
+    @Autowired
+    private MQSender sender;
+
+//    @RequestMapping("/mq")
+//    @ResponseBody
+//    public Result<String> mq() {
+//        sender.send("hello,word");
+//        return Result.success("helloword");
+//    }
+//
+//    @RequestMapping("/mq/topic")
+//    @ResponseBody
+//    public Result<String> topic() {
+//        sender.sendTopic("hello,word");
+//        return Result.success("helloword");
+//    }
+//
+//    @RequestMapping("/mq/fanout")
+//    @ResponseBody
+//    public Result<String> fanout() {
+//		sender.sendFanout("hello,imooc");
+//        return Result.success("Hello，world");
+//    }
+//
+//    @RequestMapping("/mq/header")
+//    @ResponseBody
+//    public Result<String> header() {
+//		sender.sendHeader("hello,imooc");
+//        return Result.success("Hello，world");
+//    }
 
     @RequestMapping("/hello")
     public Result<String> hello() {
@@ -32,29 +64,29 @@ public class SampleContoller extends BaseController {
     }
 
     @RequestMapping("/db/get")
-    public Result<LdUser> dbGet() {
-        LdUser ldUser = ldUserService.getById(1);
-        return Result.success(ldUser);
+    public Result<MiaoshaUser> dbGet() {
+        MiaoshaUser miaoshaUser = miaoUserService.getById(1);
+        return Result.success(miaoshaUser);
     }
 
     @RequestMapping("/db/tx")
     public Result<Boolean> dbTx() {
-        ldUserService.tx();
+        miaoUserService.tx();
         return Result.success(true);
     }
 
     @RequestMapping("/redis/get")
-    public Result<LdUser> redisGet() {
-        LdUser ldUser = redisService.get(LdUserKey.getById,""+1, LdUser.class);
-        return Result.success(ldUser);
+    public Result<MiaoshaUser> redisGet() {
+        MiaoshaUser MiaoshaUser = redisService.get(MiaoshaUserKey.getById,""+1, MiaoshaUser.class);
+        return Result.success(MiaoshaUser);
     }
 
     @RequestMapping("/redis/set")
     public Result<Boolean> redisSet() {
-        LdUser ldUser = new LdUser();
-        ldUser.setId(1L);
-        ldUser.setName("111111");
-        redisService.set(LdUserKey.getById,""+1,ldUser);
+        MiaoshaUser MiaoshaUser = new MiaoshaUser();
+        MiaoshaUser.setId(1L);
+        MiaoshaUser.setNickname("111111");
+        redisService.set(MiaoshaUserKey.getById,""+1,MiaoshaUser);
         return Result.success(true);
     }
 

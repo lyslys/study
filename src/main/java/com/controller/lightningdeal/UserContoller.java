@@ -1,7 +1,7 @@
 package com.controller.lightningdeal;
 
 import com.controller.BaseController;
-import com.model.miaosha.LdUser;
+import com.model.miaosha.MiaoshaUser;
 import com.model.result.Result;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Controller;
@@ -16,7 +16,7 @@ public class UserContoller extends BaseController implements InitializingBean {
 
     @RequestMapping("/info")
     @ResponseBody
-    public Result<LdUser> info(Model model, LdUser user) {
+    public Result<MiaoshaUser> info(Model model, MiaoshaUser user) {
         model.addAttribute("user", user);
         return Result.success(user);
     }

@@ -36,7 +36,7 @@
                      <td>${goods.goodsPrice}</td>
                      <td>${goods.miaoshaPrice}</td>
                      <td>${goods.stockCount}</td>
-                     <td><a href="to_detail/${goods.id}">详情</a></td>
+                     <td><a href="/goods_detail.htm?goodsId=${goods.id}">详情</a></td>
                  </tr>
             </#list>
     </table>

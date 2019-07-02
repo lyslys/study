@@ -1,7 +1,6 @@
 package com.utils.redis;
 
 import com.alibaba.fastjson.JSON;
-import com.utils.redis.prefix.KsyPrefix;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +16,7 @@ public class RedisService {
     /**
      * 获取单个对象
      */
-    public <T> T get(KsyPrefix prefix, String key, Class<T> clazz) {
+    public <T> T get(KeyPrefix prefix, String key, Class<T> clazz) {
         Jedis jedis = null;
         try {
             jedis = jedisPool.getResource();
@@ -34,7 +33,7 @@ public class RedisService {
     /**
      * 设置对象
      */
-    public <T> boolean set(KsyPrefix prefix, String key, T value) {
+    public <T> boolean set(KeyPrefix prefix, String key, T value) {
         Jedis jedis = null;
         try {
             jedis = jedisPool.getResource();
@@ -59,7 +58,7 @@ public class RedisService {
     /**
      * 判断key是否存在
      */
-    public <T> boolean exists(KsyPrefix prefix, String key) {
+    public <T> boolean exists(KeyPrefix prefix, String key) {
         Jedis jedis = null;
         try {
             jedis = jedisPool.getResource();
@@ -72,9 +71,25 @@ public class RedisService {
     }
 
     /**
+     * 删除
+     */
+    public boolean delete(KeyPrefix prefix, String key) {
+        Jedis jedis = null;
+        try {
+            jedis = jedisPool.getResource();
+            //生成真正的key
+            String realKey = prefix.getPrefix() + key;
+            long ret = jedis.del(realKey);
+            return ret > 0;
+        } finally {
+            returnToPool(jedis);
+        }
+    }
+
+    /**
      * 增加值
      */
-    public <T> Long incr(KsyPrefix prefix, String key) {
+    public <T> Long incr(KeyPrefix prefix, String key) {
         Jedis jedis = null;
         try {
             jedis = jedisPool.getResource();
@@ -89,7 +104,7 @@ public class RedisService {
     /**
      * 减少值
      */
-    public <T> Long decr(KsyPrefix prefix, String key) {
+    public <T> Long decr(KeyPrefix prefix, String key) {
         Jedis jedis = null;
         try {
             jedis = jedisPool.getResource();
@@ -101,7 +116,7 @@ public class RedisService {
         }
     }
 
-    private <T> String beanToString(T value) {
+    public static  <T> String beanToString(T value) {
         if (value == null) {
             return null;
         }
@@ -117,7 +132,7 @@ public class RedisService {
         }
     }
 
-    private <T> T stringToBean(String str, Class<T> clazz) {
+    public static  <T> T stringToBean(String str, Class<T> clazz) {
 
         if (StringUtils.isBlank(str) || clazz == null) {
             return null;
