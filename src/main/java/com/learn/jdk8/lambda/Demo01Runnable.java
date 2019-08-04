@@ -27,5 +27,7 @@ public class Demo01Runnable {
                 System.out.println(Thread.currentThread().getName()+" 新线程创建了");
             }
         }).start();
+
+        new Thread(() -> System.out.println(Thread.currentThread().getName()+" 新线程创建了6")).start();
     }
 }

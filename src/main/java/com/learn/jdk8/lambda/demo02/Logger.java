@@ -32,7 +32,7 @@ public class Logger {
         String msg2 = "world";
         String msg3 = "java";
 
-        showLog(0, ()->{
+        showLog(1, ()->{
             System.out.println("6666666666666");
             return  msg1+msg2+msg3;
         });

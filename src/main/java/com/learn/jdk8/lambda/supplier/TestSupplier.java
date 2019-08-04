@@ -16,10 +16,10 @@ public class TestSupplier {
         String str = new StringBuilder(getString(()->"胡歌")).reverse().toString();
 
         String str2 = getString(()->{
-            return "胡歌";
+            return "胡歌6";
         });
 
-        System.out.println(str);
+        System.out.println(str2);
 
     }
 
