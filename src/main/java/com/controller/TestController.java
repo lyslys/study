@@ -5,6 +5,7 @@ import com.model.User;
 import com.model.test.Student;
 import com.utils.excel.CommonUtils;
 import com.utils.excel.ExcelUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +21,7 @@ import java.util.Map;
 
 
 @RestController
+@Slf4j
 public class TestController{
 
     @Autowired
@@ -27,6 +29,11 @@ public class TestController{
 
     @Autowired
     private StudentMapper studentMapper;
+
+    @RequestMapping("/test")
+    public String test() {
+        return "test";
+    }
 
     @RequestMapping("/springboot")
     public String Hello() {
@@ -58,7 +65,6 @@ public class TestController{
             CommonUtils.changeMap.put("region","vms_region");
             CommonUtils.changeMap.put("businessType","vms_business_type");
             CommonUtils.changeMap.put("vehicleAttribute","vms_vehicle_attribute_type");*/
-
 
             Map mapZD = new HashMap();
             mapZD.put(0, "六二六二六");
@@ -109,7 +115,6 @@ public class TestController{
             map1.put("accountStatus", 1);
 
             mapList.add(map1);
-
 
             ExcelUtils.exportExcel(mapList,response,"用户信息","用户信息",CommonUtils.headers);
 
