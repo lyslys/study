@@ -2,6 +2,8 @@ package com.learn.polymorphic;
 
 public class Animal {
 
+    String age = "18";
+
     private String name;
 
     Animal(String name){
@@ -19,6 +21,8 @@ public class Animal {
 }
 
 class Cat extends Animal{
+
+    String age = "28Cat";
 
     private String eyesColor;
 
@@ -120,6 +124,13 @@ class Test{
 
         Dog dog1= (Dog)animal12;
         dog1.watchDoor();
+
+
+        Animal  animal3 = new Cat("aaa", "aa");
+        System.out.println(animal3.age);
+
+        Cat  animal5 = new Cat("aaa", "aa");
+        System.out.println(animal5.age);
 
     }
 }

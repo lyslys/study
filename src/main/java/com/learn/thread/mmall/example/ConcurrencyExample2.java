@@ -1,6 +1,6 @@
 package com.learn.thread.mmall.example;
 
-import com.learn.thread.mmall.annoations.ThreadSafe;
+import com.learn.thread.mmall.annoations.NotThreadSafe;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.concurrent.CountDownLatch;
@@ -9,8 +9,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
 
 @Slf4j
-@ThreadSafe
-public class ConcurrencyExample1 {
+@NotThreadSafe
+public class ConcurrencyExample2 {
 
     //请求总数
     public static int clientTotal = 5000;
@@ -18,7 +18,7 @@ public class ConcurrencyExample1 {
     //同时并发执行的线程数
     public static int threadTotal = 200;
 
-    public static int count = 0;
+    public static volatile int count = 0;
 
     public static void main(String[] args) throws Exception {
         ExecutorService executorService = Executors.newCachedThreadPool();
@@ -41,7 +41,7 @@ public class ConcurrencyExample1 {
         log.info("conut:{}",count);
     }
 
-    private synchronized  static void add(){
+    private static void add(){
         count++;
     }
 }

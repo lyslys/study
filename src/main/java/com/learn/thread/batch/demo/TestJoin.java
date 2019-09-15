@@ -15,7 +15,7 @@ public class TestJoin {
                 }
             }
         });
-        t1.start();
+
         Thread t2 = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -34,7 +34,7 @@ public class TestJoin {
                 }
             }
         });
-        t2.start();
+
         Thread t3 = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -53,7 +53,20 @@ public class TestJoin {
                 }
             }
         });
+
+        t1.start();
+        System.out.println("t1执行中.........");
+        t1.join();
+        System.out.println("t1执行完毕");
+        t2.start();
+        System.out.println("t2执行中.........");
+        t2.join();
+        System.out.println("t2执行完毕");
         t3.start();
+        System.out.println("t3执行中.........");
+        t3.join();
+        System.out.println("t3执行完毕");
+        System.out.println("主线程执行完毕");
     }
 
 }

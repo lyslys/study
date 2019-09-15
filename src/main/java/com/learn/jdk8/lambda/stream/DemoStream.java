@@ -1,22 +1,54 @@
 package com.learn.jdk8.lambda.stream;
 
+import com.model.User;
+
 import java.util.*;
 import java.util.stream.Stream;
 
-public class DemoStream {
-    public static void main(String[] args) {
-        List<String> list =  new ArrayList<>();
-        list.add("我在家");
-        list.add("吖吖6");
-        list.add("吖吖66");
-        list.add("吖吖666");
-        list.add("吖吖6666");
-        list.add("吖吖66666");
-        list.add("吖吖666666");
+public class DemoStream<T> {
 
-        list.stream().filter(name->name.startsWith("我"))
-                .filter(name->name.length()==3)
-                .forEach(name->System.out.println(name));
+    private T t;
+
+   public DemoStream(T t){
+        this.t =t;
+   }
+
+    public T get(){
+        return t;
+    }
+
+    public void dosomething(){
+       if(t instanceof User){
+           ((User) t).setName("马云");
+           System.out.println(t);
+       }else if(t instanceof Integer){
+           System.out.println("---->"+t);
+       }
+    }
+
+    public static void main(String[] args) {
+        DemoStream demoStream = new DemoStream(123456);
+        System.out.println(demoStream.get());
+        DemoStream<User> demoStream2 = new DemoStream<User>(new User("18","张三"));
+        demoStream.dosomething();
+        demoStream2.dosomething();
+
+
+
+//        List<String> list =  new ArrayList<>();
+//        list.add("我在家");
+//        list.add("吖吖6");
+//        list.add("吖吖66");
+//        list.add("吖吖666");
+//        list.add("吖吖6666");
+//        list.add("吖吖66666");
+//        list.add("吖吖666666");
+
+//        list.stream().filter(name->name.startsWith("我"))
+//                .filter(name->name.length()==3)
+//                .forEach(name->System.out.println(name));
+
+//        list.forEach(System.out::println);
     }
 }
 

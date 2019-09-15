@@ -53,7 +53,10 @@ class TestMethodRerObject{
  * 通过对象名引用静态成员方法
  */
 class StaticMethodRerObject{
-    public static int m(int number,Calcable c){
+    public static int m(int number,Calcable c,Integer... numbers){
+        Arrays.stream(numbers).forEach(num -> {
+            System.out.println(num++);
+        });
         return  c.calsAbs(number);
     }
 }
@@ -61,13 +64,16 @@ class StaticMethodRerObject{
 class TestStaticMethodRerObject{
 
     public static void main(String[] args) {
-        int number =  StaticMethodRerObject.m(-10,(n)-> {
-            return Math.abs(n);
-        });
+        int number =  StaticMethodRerObject.m(-10,(nn)-> {
+            int j = StaticMethodRerObject.m(nn, Math::abs);
+            return Math.abs(j);
+        },6,9,999999,10000,88888);
         System.out.println(number);
 
         number = StaticMethodRerObject.m(-20,Math::abs);
         System.out.println(number);
+
+
     }
 }
 

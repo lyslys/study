@@ -122,6 +122,128 @@ public class TestList {
 
         System.out.println(list7);
 
+        System.out.println("----------------->");
+
+        System.out.println(list);
+
+        int size  =list.size();
+        for (int i = 0; i < size ; i++) {
+            list.remove(list.get(i));
+        }
+
+        list.clear();
+
+        System.out.println(list);
+
+
+    }
+
+}
+
+
+class Test01{
+
+    public static int  test(){
+        int i = 0;
+        try{
+            i++;
+            System.out.println("try block, i = "+i);
+            return i;
+        }catch(Exception e){ //NumberFormatException
+            i++;
+            System.out.println("catch block i = "+i);
+            return i;
+        }finally{
+            i++;
+            System.out.println("finally block i = "+i);
+        }
+
+    }
+
+    public static Collection  test1(){
+        List<String> list = new ArrayList<String>();
+        try{
+            list.add("step try");
+            System.out.println("try block");
+            return list;
+        }catch(Exception e){
+            list.add("step catch");
+            System.out.println("catch block");
+            return list;
+        }finally{
+            list.add("step finally");
+            System.out.println("finally block ");
+        }
+    }
+
+    public static void main(String[] args) {
+        System.out.println(test());
+        System.out.println(test1().toString());
+
+
+        final ArrayList list = new ArrayList();
+        list.add("666");
+        ArrayList var1 = list;
+        list.add(6);
+        list.add(7);
+        list.add(8);
+        list.add(9);
+        System.out.println(var1);
+
+
+        int i = 0;
+        int var2 = i;
+        i++;
+        System.out.println(var2);
+
+        try {
+            // do something System...
+            System.out.println("step fourth:--->try running");
+            System.exit(1);
+
+        }finally {
+            System.out.println("step fourth:--->finally run");
+        }
+
+
+        StringBuilder stringBuilder = new StringBuilder();
+        StringBuffer stringBuffer = new StringBuffer();
+
+
+        Random  random = new Random();
+        random.nextInt();
+        System.out.println(random.nextInt());
+
+
+    }
+}
+
+class Test02 extends ClassLoader{
+
+    public static int get(){
+        int res = 0 ;
+        int i = 10;
+
+        try {
+            res++;
+            int j = i/(res-1);
+            return res;
+        }catch (RuntimeException e){
+            e.printStackTrace();
+            return i;
+        }finally {
+            res+=10000000;
+            i=100;
+//            return 100;
+        }
+
+    }
+
+    public static void main(String[] args) {
+//        System.out.println(get());
+
+      Map map =  Collections.synchronizedMap(new HashMap<>());
+
     }
 
 }

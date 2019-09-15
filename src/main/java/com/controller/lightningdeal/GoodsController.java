@@ -153,6 +153,10 @@ public class GoodsController {
     }
 
     public String getTemplate(String template, Map<String,Object> map) throws IOException, TemplateException {
+
+        /**
+         *
+         */
         Configuration cfg = new Configuration(Configuration.VERSION_2_3_28);
         cfg.setClassForTemplateLoading(this.getClass(), "/web/lightningdeal");
         cfg.setDefaultEncoding("UTF-8");
