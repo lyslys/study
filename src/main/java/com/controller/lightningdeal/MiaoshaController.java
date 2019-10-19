@@ -49,7 +49,7 @@ public class MiaoshaController  implements InitializingBean {
     @Autowired
     MiaoshaService miaoshaService;
 
-    @Autowired
+//    @Autowired
     MQSender sender;
 
     private Map<Long,Boolean> localOverMap = new HashMap<Long,Boolean>();

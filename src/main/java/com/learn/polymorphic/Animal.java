@@ -6,6 +6,18 @@ public class Animal {
 
     private String name;
 
+    static {
+        System.out.println("Animal 静态块static");
+    }
+
+    {
+        System.out.println("Animal 大括号");
+    }
+
+    public Animal() {
+        System.out.println("Animal 的无参构造方法");
+    }
+
     Animal(String name){
         this.name = name;
     }
@@ -26,7 +38,19 @@ class Cat extends Animal{
 
     private String eyesColor;
 
-    Cat(String name,String eyesColor) {
+    static {
+        System.out.println("cat 静态块static");
+    }
+
+    {
+        System.out.println("cat 大括号");
+    }
+
+    public Cat() {
+        System.out.println("cat 的无参构造方法");
+    }
+
+    Cat(String name, String eyesColor) {
         super(name);
         this.eyesColor = eyesColor;
     }
@@ -96,7 +120,13 @@ class Lady {
 
 class Test{
     public static void main(String[] args) {
-        Cat cat = new Cat("catname","blue");
+
+
+        Cat cat = new Cat();
+
+
+
+     /*   Cat cat = new Cat("catname","blue");
         Dog dog = new Dog("dogname","black");
         Bird bird = new Bird("birdname","black");
 
@@ -130,7 +160,7 @@ class Test{
         System.out.println(animal3.age);
 
         Cat  animal5 = new Cat("aaa", "aa");
-        System.out.println(animal5.age);
+        System.out.println(animal5.age);*/
 
     }
 }

@@ -22,7 +22,7 @@ public class SampleContoller extends BaseController {
     @Autowired
     private RedisService redisService;
 
-    @Autowired
+//    @Autowired
     private MQSender sender;
 
 //    @RequestMapping("/mq")
