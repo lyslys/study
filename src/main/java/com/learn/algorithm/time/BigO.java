@@ -20,5 +20,7 @@ public class BigO {
 
         System.out.println("执行了"+j+"次");
 
+        System.out.println(4%8);
+
     }
 }
