@@ -22,5 +22,21 @@ public class ValidatorUtil {
         System.out.println(isMobile("18682121172"));
         System.out.println(isMobile("186821211729"));
         Date date = new Date();
+
+
+        int a = 1;
+        int b = 6;
+        int c = 8;
+
+//        c=b=a;
+        a=b=c;
+//        a=c;
+//        b=c;
+
+        System.out.println(a);
+        System.out.println(b);
+        System.out.println(c);
+
+
     }
 }

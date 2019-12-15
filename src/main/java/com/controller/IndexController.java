@@ -6,6 +6,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 
 @Controller
@@ -24,7 +28,6 @@ public class IndexController {
         ArrayList<User> users = queryUsers();
 
         for (User user: users) {
-            //TODO 业务处理
             System.out.println("user:" + user.toString());
         }
         return "end";
@@ -42,4 +45,33 @@ public class IndexController {
         return users;
     }
 
+
+    ThreadPoolExecutor pool = new ThreadPoolExecutor(
+            10000,
+            100000,
+            3,
+            TimeUnit.SECONDS,
+            new ArrayBlockingQueue<Runnable>(10000),
+            Executors.defaultThreadFactory(),
+            new ThreadPoolExecutor.DiscardPolicy());
+
+    @RequestMapping("testThread")
+    @ResponseBody
+    public String testThread() {
+
+        pool.submit(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        System.out.println("---ok->");
+
+        return "ok";
+    }
 }

@@ -75,5 +75,8 @@ public class TestMap {
 
         Map<String,Integer> map8 = new Hashtable<String,Integer>();
 
+        Map c = new ConcurrentHashMap();
+
+//        BitSet
     }
 }
