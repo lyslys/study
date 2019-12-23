@@ -7,8 +7,15 @@ import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoField;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalAccessor;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 时间工具类
@@ -244,10 +251,9 @@ public class DateUtils {
         return weekDays[w];
     }
 
-
     public static void main(String[] args) throws Exception{
 
-        System.out.println(dateToWeek("2019-02-21"));
+//        System.out.println(dateToWeek("2019-02-21"));
 
 //        System.out.println((1533266141000L-1530414936000L)/(1000*60*60));
 //            System.out.println(new BigDecimal(200).divide(new BigDecimal(792),2, RoundingMode.HALF_UP));
@@ -259,7 +265,144 @@ public class DateUtils {
         333351000*/
 //        System.out.println(formatDuring(333351000L));
 
-        System.out.println(hoursToSeconds(new BigDecimal(0.5)));
+//        System.out.println(hoursToSeconds(new BigDecimal(0.5)));
+
+
+        DateTimeFormat.main(args);
 
     }
+
+    /**
+     * 1.8
+     */
+
+    static class  DateTimeFormat {
+
+        public static void main(String[] args) throws ParseException {
+
+	/*java.time包内，有几个比较重要的组件，Instant（时间戳）；LocalDate（日期）；LocalDate（时间）；LocalDateTime（日期时间）；
+	ZonedDateTime（带有区域信息的日期时间，比如中国默认使用的是东八区）。Period（如两个日期之间相差的天数）；Druation（两个日期时间之间间隔的秒和纳秒）。*/
+
+            Instant now = Instant.now();
+            System.out.println(now.toString());  // 2018-08-06T09:44:13.677Z  (utc时间格式，标准时间格式)
+            System.out.println(now.get(ChronoField.MILLI_OF_SECOND)); //毫秒 677
+            System.out.println(now.get(ChronoField.MICRO_OF_SECOND)); //微秒 677000
+            System.out.println(now.get(ChronoField.NANO_OF_SECOND));  //纳秒 677000000
+            System.out.println(ZoneId.systemDefault());  // Asia/Shanghai
+            LocalDateTime localDateTime = LocalDateTime.ofInstant(now, ZoneId.systemDefault());
+            LocalDate localDate = LocalDate.now();  //
+            System.out.println(localDate);  //2018-08-06
+            System.out.println(localDateTime); //2018-08-06T17:44:13.677
+
+            // 获得当前日期
+            LocalDate localDate1 = LocalDate.now();
+            System.out.println(localDate1.toString());
+            // 日期加上1天
+            LocalDate localDate2 = localDate1.plusDays(1);
+            System.out.println(localDate2.toString());
+            // 日期加上一周
+            LocalDate localDate3 = localDate1.plusWeeks(1);
+            System.out.println(localDate3);
+            // 计算当前年的第52天是几月几号
+            System.out.println("今年的第52天 = " + localDate1.withDayOfYear(52));
+
+            // 字符串转日期
+            DateTimeFormatter strToDateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            TemporalAccessor dateTemporal = strToDateFormatter.parse("2017-01-01 13:00:00");
+            LocalDate date = LocalDate.from(dateTemporal);
+            System.out.println(date);
+            LocalDateTime dateTime = LocalDateTime.parse("2017-01-01 13:00:00", strToDateFormatter);
+            System.out.println(dateTime.toString());
+
+
+
+            // 格式化日期
+            LocalDateTime localDateTime1 = LocalDateTime.now();
+            DateTimeFormatter dateToStrFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String dateStr = dateToStrFormatter.format(localDateTime1);
+            System.out.println("dateStr:"+dateStr);
+
+            // 只处理时间
+            LocalTime localTime = LocalTime.now();
+            System.out.println("local time = " + localTime);
+            System.out.println("plus 12 hours = " + localTime.plusHours(12));
+
+            /**
+             * Period代表的是两个日期之间的天、月、年数差值，当然，我们也可以直接使用日期中的until方法来完成同样的效果。
+             */
+
+            LocalDate startDate = LocalDate.now();
+            LocalDate endDate = startDate.plusDays(1);
+
+            Period period = Period.between(startDate, endDate);
+            System.out.println("间隔的天数" + period.getDays());
+            System.out.println("间隔的月数:" + period.getMonths());
+            System.out.println("间隔的年数:" + period.getYears());
+
+            // 直接使用日期类中的方法计算日期间隔
+            long days = startDate.until(endDate, ChronoUnit.DAYS);
+            System.out.println("间隔的天数:" + days);
+            long weeks = startDate.until(endDate, ChronoUnit.WEEKS);
+            System.out.println("间隔的周数:" + weeks);
+
+            /*Duration表示的是两个日期时间间隔的秒以及纳秒数。*/
+            LocalDateTime start = LocalDateTime.now();
+            LocalDateTime end = start.plusDays(1);
+            Duration duration = Duration.between(start, end);
+            System.out.println("间隔的秒数:" + duration.get(ChronoUnit.SECONDS));
+            //System.out.println("间隔的毫秒数:" + duration.get(ChronoUnit.MICROS));
+            System.out.println("间隔的纳秒数:" + duration.get(ChronoUnit.NANOS));
+
+
+            ///////////////////////////////
+            DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+            String dateTimeF = LocalDateTime.now().format(fmt); //将当前时间转换为  2017-10-19 10:25:36
+            //将时间装换为long值      时间戳
+            long currentTime = LocalDateTime.parse(dateTimeF,fmt).atZone(ZoneId.of("Asia/Shanghai")).toInstant().toEpochMilli();
+            System.out.println("时间戳:"+currentTime);
+            //将long转为格式化时间字符串
+            String timeNow = fmt.format(LocalDateTime.ofInstant(Instant.ofEpochMilli(currentTime),ZoneId.of("Asia/Shanghai")));
+            System.out.println("时间:"+timeNow);
+
+            /* Date转LocalDate：*/
+            Date date11 = new Date();
+            LocalDate localDate11 = date11.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            System.out.println(localDate11);
+            /*  LocalDate 转 Date:*/
+            LocalDateTime localDateTime22 = LocalDateTime.now();
+            ZoneId zoneId = ZoneId.systemDefault();
+            ZonedDateTime zdt = localDateTime22.atZone(zoneId);
+            Date dateType = Date.from(zdt.toInstant());
+            //Date dateType = Date.from(localDateTime22.atZone(ZoneId.systemDefault()).toInstant());
+            System.out.println("LocalDateTime = " + localDateTime22);
+            System.out.println("Date = " + dateType);
+
+            //jdk 1.7
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat sdf2 = new SimpleDateFormat("MM/dd/yyyy");
+            Date date33 = sdf.parse("2018-08-08");
+            String aaa = sdf2.format(date33);
+            System.out.println(aaa);
+        }
+
+
+
+
+        public static List<String> getDateArrayList(String startTime, String endTime) throws ParseException{
+
+            List<String> dateArrayList = new ArrayList<String>();
+            SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+            long stime=sdf.parse(startTime).getTime();
+            long etime=sdf.parse(endTime).getTime();
+            while(stime<=etime){
+                String time=sdf.format(new Date(stime));
+                dateArrayList.add(time);
+                stime += 24*60*60*1000;
+            }
+            return dateArrayList;
+        }
+
+    }
+
 }

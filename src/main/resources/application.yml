@@ -63,4 +63,4 @@ spring:
 #        virtual-host: /
 logging:
     level:
-      com.mapper : info
+      com.mapper: info

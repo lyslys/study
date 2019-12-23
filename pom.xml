@@ -9,7 +9,6 @@
 	<packaging>jar</packaging>
 
 	<name>concurrency</name>
-	<description>Demo project for Spring Boot</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -154,6 +153,13 @@
             <artifactId>snakeyaml</artifactId>
             <version>1.24</version>
         </dependency>
+
+		<!-- 导入netty -->
+		<dependency>
+			<groupId>io.netty</groupId>
+			<artifactId>netty-all</artifactId>
+			<version>4.1.35.Final</version>
+		</dependency>
 
 	</dependencies>
 
