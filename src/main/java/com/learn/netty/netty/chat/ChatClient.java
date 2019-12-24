@@ -27,9 +27,9 @@ public class ChatClient {
                         protected void initChannel(SocketChannel ch) throws Exception {
 
                             ChannelPipeline pipeline = ch.pipeline();
-                            //编码器
-                            pipeline.addLast("decoder",new StringDecoder());
                             //解码器
+                            pipeline.addLast("decoder",new StringDecoder());
+                            //编码器
                             pipeline.addLast("encoder",new StringEncoder());
                             //加入处理器
                             pipeline.addLast(new ChatClientHandler());
@@ -40,9 +40,13 @@ public class ChatClient {
             Channel channel = channelFuture.channel();
             System.out.println("=============="+channel.localAddress()+"============");
             Scanner scanner = new Scanner(System.in);
-            while (scanner.hasNextLine()){
+          /*  while (scanner.hasNextLine()){
                 String msg = scanner.nextLine();
                 channel.writeAndFlush(msg);
+            }*/
+
+            for (int i = 0; i < 200; i++) {
+                channel.writeAndFlush("hello 梁焱升！");
             }
 
             //对关闭通道进行监听

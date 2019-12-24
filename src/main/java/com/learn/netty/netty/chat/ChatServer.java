@@ -24,9 +24,9 @@ public class ChatServer {
                         @Override
                         protected void initChannel(SocketChannel ch) throws Exception {
                             ChannelPipeline pipeline = ch.pipeline();
-                            //编码器
-                            pipeline.addLast("decoder",new StringDecoder());
                             //解码器
+                            pipeline.addLast("decoder",new StringDecoder());
+                            //编码器
                             pipeline.addLast("encoder",new StringEncoder());
                             ch.pipeline().addLast(new ChatServerHandler());
                         }
