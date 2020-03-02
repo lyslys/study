@@ -1,4 +1,4 @@
-package com.learn.tuling.singleton;
+package com.learn.tuling.designpattern.singleton;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;

@@ -1,4 +1,4 @@
-package com.learn.tuling.singleton;
+package com.learn.tuling.designpattern.singleton;
 
 import java.io.*;
 

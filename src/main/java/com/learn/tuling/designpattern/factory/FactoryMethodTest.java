@@ -1,4 +1,4 @@
-package com.learn.tuling.factory;
+package com.learn.tuling.designpattern.factory;
 
 public class FactoryMethodTest {
 

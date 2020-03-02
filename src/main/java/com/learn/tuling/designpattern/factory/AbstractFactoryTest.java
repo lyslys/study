@@ -1,5 +1,8 @@
-package com.learn.tuling.factory;
+package com.learn.tuling.designpattern.factory;
 
+/**
+ * 抽象工厂模式
+ */
 public class AbstractFactoryTest {
 
     public static void main(String[] args) {

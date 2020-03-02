@@ -1,4 +1,4 @@
-package com.learn.tuling.builder.v2;
+package com.learn.tuling.designpattern.builder.v2;
 
 public class ProductTest {
     public static void main(String[] args) {

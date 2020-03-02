@@ -69,7 +69,7 @@ class FutureTaskDemo {
     public static void main(String[] args) throws Exception{
         FutureTask<String> task = new FutureTask<String>(new MyCallable());
         new Thread(task).start();
-        if(!task.isDone()){
+            if(!task.isDone()){
             System.out.println("还没完成");
         }
         System.out.println("task return: "+task.get());

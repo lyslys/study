@@ -1,8 +1,10 @@
-package com.learn.tuling.builder;
+package com.learn.tuling.designpattern.builder;
 
+/**
+ * 建造者模式
+ */
 public class BuilderTest {
     public static void main(String[] args) {
-
 
         ProductBuilder specialConcreteProductBuilder = new SpecialConcreteProductBuilder();
 
