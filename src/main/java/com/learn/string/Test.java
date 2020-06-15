@@ -2,6 +2,8 @@ package com.learn.string;
 
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 
 public class Test implements Serializable {
 
@@ -25,6 +27,10 @@ public class Test implements Serializable {
         Object id = 66666;
         Long idL = (Long)id;
         System.out.println(idL);
+
+
+        BigInteger bigInteger = new BigInteger("999");
+        BigDecimal bigDecimal = new BigDecimal(33);
 
 
 

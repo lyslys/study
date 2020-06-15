@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicLong;
 
 
 @RestController
@@ -128,5 +129,48 @@ public class TestController{
     public Student getStu(@PathVariable("id") Integer id){
         return  studentMapper.getStudentById(id);
     }
-    
+
+    public static int j = 0;
+
+    public static ThreadLocal<Long> i = new ThreadLocal<Long>();
+
+    public static AtomicLong atomicLong = new AtomicLong();
+
+    @RequestMapping("/test1")
+    public long test1() {
+        Long a = (Long) i.get();
+        if(a == null){
+            a = 0L;
+        }
+        a++;
+        i.set(a);
+        System.out.println(i.get());
+        return i.get();
+    }
+
+    @RequestMapping("/test2")
+    public long test2() {
+        i.set(0L);
+        return i.get();
+    }
+
+    @RequestMapping("/test3")
+    public long test3() {
+        return i.get();
+    }
+
+    @RequestMapping("/test5")
+    public long test5() {
+        j++;
+        System.out.println("j:"+j);
+        return j;
+    }
+
+    @RequestMapping("/test6")
+    public long test6() {
+        atomicLong.incrementAndGet();
+        System.out.println("atomicLong:"+atomicLong.get());
+        return atomicLong.get();
+    }
+
 }

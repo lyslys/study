@@ -27,10 +27,10 @@ public class LoginContoller extends BaseController {
 
     @RequestMapping("/do_login")
     @ResponseBody
+
     public Result<String> doLogin(HttpServletResponse response, @Valid LoginVo loginVo) {
         //登录
         String token = miaoshaUserService.login(response, loginVo);
         return Result.success(token);
     }
-
 }
